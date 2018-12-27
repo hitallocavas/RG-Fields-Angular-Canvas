@@ -14,29 +14,43 @@ export class AppComponent {
   ngAfterViewInit(): void {
     var ctx = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d');
     
-    var valor = 2;
+    
+    var valor = 0;
     ctx.font = "10px Arial";
     
       var imageObj= new Image();
       
       imageObj.onload = ()=>{
       
-        ctx.drawImage(imageObj, 10, 0);
-        ctx.fillText("Hitallo Silva", 80, 62);
-        valor = valor + 210;
-        ctx.drawImage(imageObj, 10, valor);
-        ctx.fillText("Allan Borges", 80, 62 + valor);
-        valor = valor + 210;
-        ctx.drawImage(imageObj, 10, valor);
-        ctx.fillText("Danilo Farias", 80, 62 + valor);
-        valor = valor + 210;
-        ctx.drawImage(imageObj, 10, valor);
-        ctx.fillText("Magdala Novaes", 80, 62 + valor);
+        ctx.drawImage(imageObj, 10, 0, 741, 257);
+        ctx.fillText("Hitallo Silva", 180, 105);
+        valor = valor + 257 + 8;
+        ctx.drawImage(imageObj, 10, valor, 741, 257);
+        ctx.fillText("Allan Borges", 180, 105 + valor);
+        valor = valor + 257+8;
+        ctx.drawImage(imageObj, 10, valor, 741, 257);
+        ctx.fillText("Danilo Farias", 180, 105 + valor);
+        valor = valor + 257 + 8;
+        ctx.drawImage(imageObj, 10, valor, 741, 257);
+        ctx.fillText("Magdala Novaes", 180, 105 + valor);
+        this.desenharPolegares(ctx,257+8)
 
       } 
 
       imageObj.src = './../assets/cnh.png';
-    console.log(imageObj);
+
+    
+  }
+
+  private desenharPolegares(ctx,valor):void{
+    let polegar = new Image();
+    polegar.onload = () => {
+      ctx.drawImage(polegar, 650, 110, 65,90);
+      ctx.drawImage(polegar, 650, 110 + valor, 65,90);
+      ctx.drawImage(polegar, 650, 110 + valor*2, 65,90);
+      ctx.drawImage(polegar, 650, 110 + valor*3, 65,90);
+    }
+    polegar.src = './../assets/polegar.jpg';
   }
 
   private imprimir(){
